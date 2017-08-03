@@ -2,13 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans    
-                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
+                        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd    
                         http://www.springframework.org/schema/context    
-                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
-                        http://www.springframework.org/schema/mvc    
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+                        http://www.springframework.org/schema/context/spring-context-4.3.xsd    
+                        http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<context:component-scan base-package="com.sunveee.template.ssm" />
 
@@ -17,22 +17,74 @@
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="${driver}" />
-		<property name="url" value="${url}" />
-		<property name="username" value="${username}" />
-		<property name="password" value="${password}" />
-		<!-- 初始化连接大小 -->
-		<property name="initialSize" value="${initialSize}"></property>
-		<!-- 连接池最大数量 -->
-		<property name="maxActive" value="${maxActive}"></property>
-		<!-- 连接池最大空闲 -->
-		<property name="maxIdle" value="${maxIdle}"></property>
-		<!-- 连接池最小空闲 -->
-		<property name="minIdle" value="${minIdle}"></property>
-		<!-- 获取连接最大等待时间 -->
-		<property name="maxWait" value="${maxWait}"></property>
+	<!-- AOP自动代理功能 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- 配置数据源 dataSourceA -->
+	<bean name="dataSourceA" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${driver_A}" />
+		<property name="url" value="${url_A}" />
+		<property name="username" value="${username_A}" />
+		<property name="password" value="${password_A}" />
+		<property name="initialSize" value="${initialSize_A}" />
+		<property name="maxActive" value="${maxActive_A}" />
+		<!-- <property name="maxIdle" value="${maxIdle_A}" /> -->
+		<property name="minIdle" value="${minIdle_A}" />
+		<property name="maxWait" value="${maxWait_A}" />
+		<property name="validationQuery" value="${validationQuery_A}" />
+		<property name="testOnBorrow" value="true" />
+		<property name="testOnReturn" value="false" />
+		<property name="testWhileIdle" value="true" />
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<property name="minEvictableIdleTimeMillis" value="25200000" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="1800" />
+		<property name="logAbandoned" value="true" />
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="1000" />
+		<property name="filters" value="stat" />
+	</bean>
+
+
+	<!-- 配置数据源 dataSourceB -->
+	<bean name="dataSourceB" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${driver_B}" />
+		<property name="url" value="${url_B}" />
+		<property name="username" value="${username_B}" />
+		<property name="password" value="${password_B}" />
+		<property name="initialSize" value="${initialSize_B}" />
+		<property name="maxActive" value="${maxActive_B}" />
+		<!-- <property name="maxIdle" value="${maxIdle_B}" /> -->
+		<property name="minIdle" value="${minIdle_B}" />
+		<property name="maxWait" value="${maxWait_B}" />
+		<property name="validationQuery" value="${validationQuery_B}" />
+		<property name="testOnBorrow" value="true" />
+		<property name="testOnReturn" value="false" />
+		<property name="testWhileIdle" value="true" />
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		<property name="minEvictableIdleTimeMillis" value="25200000" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="1800" />
+		<property name="logAbandoned" value="true" />
+		<property name="poolPreparedStatements" value="true" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="1000" />
+		<property name="filters" value="stat" />
+	</bean>
+
+	<!-- 多数据源配置 -->
+	<bean id="dataSource" class="com.sunveee.template.ssm.datasource.DynamicDataSource">
+		<!-- 默认使用dataSourceA的数据源 -->
+		<property name="defaultTargetDataSource" ref="dataSourceA"></property>
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry value-ref="dataSourceA" key="dataSourceA"></entry>
+				<entry value-ref="dataSourceB" key="dataSourceB"></entry>
+			</map>
+		</property>
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
