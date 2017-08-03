@@ -15,16 +15,37 @@ import com.sunveee.template.ssm.util.PageHandler;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    /**
+     * 记录访问次数，进行数据库的切换
+     */
+    private static int  n = 0;
 
     @Autowired
     private UserService userService;
 
+    /**
+     * 根据不同的数据源加载用户列表<br>
+     * 
+     * @param pageNo
+     * @param pageSize
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/list")
     public String toUserList(@RequestParam(value = "pageNo", defaultValue = "0") Integer pageNo, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
-        List<User> userPage = userService.getUserPage(pageNo, pageSize);
-        model.addAttribute("userPage", userPage);
-        int infoCount = userService.getAllUserCount();
-        PageHandler.handlePage(pageNo, pageSize, infoCount, model);
+        n++;
+        if (n % 2 != 0) {
+            List<User> userPage = userService.getUserPage(pageNo, pageSize);
+            model.addAttribute("userPage", userPage);
+            int infoCount = userService.getAllUserCount();
+            PageHandler.handlePage(pageNo, pageSize, infoCount, model);
+
+        } else {
+            List<User> userPage = userService.getUserPage_dataSourceB(pageNo, pageSize);
+            model.addAttribute("userPage", userPage);
+            int infoCount = userService.getAllUserCount_dataSourceB();
+            PageHandler.handlePage(pageNo, pageSize, infoCount, model);
+        }
         return "user/user-list";
     }
 
