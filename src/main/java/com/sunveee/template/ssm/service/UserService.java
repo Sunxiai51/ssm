@@ -10,4 +10,10 @@ public interface UserService {
     public List<User> getUserPage(int pageNo, int pageSize);
 
     public Integer getAllUserCount();
+
+    public User getUserById_dataSourceB(int userId);
+
+    public List<User> getUserPage_dataSourceB(int pageNo, int pageSize);
+
+    public Integer getAllUserCount_dataSourceB();
 }

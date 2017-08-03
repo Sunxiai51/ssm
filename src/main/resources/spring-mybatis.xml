@@ -21,7 +21,7 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<!-- 配置数据源 dataSourceA -->
-	<bean name="dataSourceA" class="com.alibaba.druid.pool.DruidDataSource"
+	<bean id="dataSourceA" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
 		<property name="driverClassName" value="${driver_A}" />
 		<property name="url" value="${url_A}" />
@@ -49,7 +49,7 @@
 
 
 	<!-- 配置数据源 dataSourceB -->
-	<bean name="dataSourceB" class="com.alibaba.druid.pool.DruidDataSource"
+	<bean id="dataSourceB" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
 		<property name="driverClassName" value="${driver_B}" />
 		<property name="url" value="${url_B}" />
