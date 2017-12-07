@@ -11,7 +11,7 @@ import com.sunveee.template.ssm.model.User;
 import com.sunveee.template.ssm.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring-mybatis.xml" })
+@ContextConfiguration(locations = { "classpath:spring-config.xml" })
 public class TestMyBatis {
     @Resource
     private UserService userService;

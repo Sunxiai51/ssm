@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-	<context:component-scan base-package="com.sunveee.template.ssm" />
+	<!-- <context:component-scan base-package="com.sunveee.template.ssm" /> -->
 
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -38,8 +38,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations"
-			value="classpath:com/sunveee/template/ssm/mapping/*.xml"></property>
+		<property name="mapperLocations" value="classpath:mapping/*.xml"></property>
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
