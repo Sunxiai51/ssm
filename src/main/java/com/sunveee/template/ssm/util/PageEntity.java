@@ -1,38 +1,36 @@
 package com.sunveee.template.ssm.util;
 
+/**
+ * 分页实体类
+ * 
+ * @author 51
+ * @version $Id: PageEntity.java, v 0.1 2017年12月12日 下午3:47:14 51 Exp $
+ */
 public class PageEntity {
     private int pageNo;
     private int pageSize;
     private int startNo;
 
-    public PageEntity(int pageNo, int pageSize) {
+    private PageEntity(int pageNo, int pageSize) {
         this.pageNo = pageNo;
         this.pageSize = pageSize;
         this.startNo = pageNo * pageSize;
+    }
+
+    public static PageEntity getInstance(int pageNo, int pageSize) {
+        return new PageEntity(pageNo, pageSize);
     }
 
     public int getPageNo() {
         return pageNo;
     }
 
-    public void setPageNo(int pageNo) {
-        this.pageNo = pageNo;
-    }
-
     public int getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
     public int getStartNo() {
         return startNo;
-    }
-
-    public void setStartNo(int startNo) {
-        this.startNo = startNo;
     }
 
 }

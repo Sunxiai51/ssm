@@ -2,6 +2,12 @@ package com.sunveee.template.ssm.util;
 
 import org.springframework.ui.Model;
 
+/**
+ * 分页列表页面处理类
+ * 
+ * @author 51
+ * @version $Id: PageHandler.java, v 0.1 2017年12月12日 下午3:48:13 51 Exp $
+ */
 public class PageHandler {
 
     /**

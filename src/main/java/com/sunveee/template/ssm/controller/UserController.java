@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sunveee.template.ssm.model.User;
+import com.sunveee.template.ssm.entity.mbg.User;
 import com.sunveee.template.ssm.service.UserService;
 import com.sunveee.template.ssm.util.PageHandler;
 
