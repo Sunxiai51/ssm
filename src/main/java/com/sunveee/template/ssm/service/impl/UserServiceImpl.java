@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
@@ -25,13 +26,15 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapperExternal  userMapperExternal;
 
+    @Cacheable(value = "user", key = "'id_'+#userId")
+    @Override
     public User getUserById(int userId) {
 
-        LogUtil.info(logger, "开始查询id为{0}的用户", userId);
+        LogUtil.info(logger, "开始查询数据库中id为{0}的用户", userId);
 
         User result = this.userMapper.selectByPrimaryKey(userId);
 
-        LogUtil.info(logger, "查询到id为{0}的用户,user={1}", userId, JSON.toJSONString(result));
+        LogUtil.info(logger, "查询到数据库中id为{0}的用户,user={1}", userId, JSON.toJSONString(result));
 
         return result;
     }

@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/id/{userId}")
+    @RequestMapping(value = "/id/{userId}", produces = "text/plain; charset=UTF-8")
     public String toUserInfo(@PathVariable("userId") Integer userId) {
         LogUtil.debug(logger, "根据用户id访问用户信息Controller");
 
