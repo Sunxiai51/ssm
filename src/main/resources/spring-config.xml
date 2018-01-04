@@ -17,13 +17,14 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:jdbc.properties</value>
-				<value>classpath:redis.properties</value>
+				<value>classpath:config/jdbc.properties</value>
+				<value>classpath:config/redis.properties</value>
 			</list>
 		</property>
 	</bean>
 
 	<!-- 引入Spring其它配置文件 -->
-	<import resource="spring/spring-*.xml" />
+	<import resource="spring/spring-mybatis.xml" />
+	<import resource="spring/spring-redis.xml" />
 
 </beans>
