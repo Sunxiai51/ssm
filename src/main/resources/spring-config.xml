@@ -18,13 +18,11 @@
 		<property name="locations">
 			<list>
 				<value>classpath:config/jdbc.properties</value>
-				<value>classpath:config/redis.properties</value>
 			</list>
 		</property>
 	</bean>
 
 	<!-- 引入Spring其它配置文件 -->
 	<import resource="spring/spring-mybatis.xml" />
-	<import resource="spring/spring-redis.xml" />
 
 </beans>
