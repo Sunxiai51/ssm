@@ -1,24 +1,20 @@
-package com.sunveee.template.ssm.test;
+package com.sunveee.template.ssm.test.dbconn;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
 import com.sunveee.template.ssm.entity.mbg.User;
 import com.sunveee.template.ssm.service.UserService;
+import com.sunveee.template.ssm.test.BaseTest;
 import com.sunveee.template.ssm.util.LogUtil;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring-config.xml" })
-public class TestMyBatis {
+public class TestMyBatis extends BaseTest {
     private static final Logger logger = LoggerFactory.getLogger(TestMyBatis.class);
 
     @Resource

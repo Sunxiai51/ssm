@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapperExternal  userMapperExternal;
 
-    @Cacheable(value = "user", key = "'id_'+#userId")
+    @Cacheable(value = "user"/*, key = "'id_'+#userId"*/)
     @Override
     public User getUserById(int userId) {
 
