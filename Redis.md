@@ -140,16 +140,13 @@ public UserDomain4RedisCacheTest getUserByID(String userId) {
 
 每次执行更新操作时，执行更新操作后，更新结果将存入缓存（覆盖之前可能存在的值）。
 
+**注意：在分布式环境下，在更新后删除缓存更能保证数据的一致性。**
+
 该场景使用 `@CachePut` 配置，示例如下：
 
 ```java
 @CachePut(value = "userCache", key = "#userId")
-public UserDomain4RedisCacheTest updateUserByID(String userId) {
-  LogUtil.info(logger, "更新用户，id={0}", userId);
-  UserDomain4RedisCacheTest result = geneUserById(userId);
-  result.setUpdateTime();
-  return result;
-}
+public User updateUserByID(String userId)
 ```
 
 `@CachePut` 配置项与 `@Cacheable` 基本相同。
@@ -162,10 +159,7 @@ public UserDomain4RedisCacheTest updateUserByID(String userId) {
 
 ```java
 @CacheEvict(value = "userCache", key = "#userId")
-public int deleteUserByID(String userId) {
-  LogUtil.info(logger, "删除用户，id={0}", userId);
-  return 1;
-}
+public int deleteUserByID(String userId)
 ```
 
 `@CacheEvict` 配置项与 `@Cacheable` 也基本相同，值得一提的是其allEntries和beforeInvocation属性。

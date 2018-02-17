@@ -1,12 +1,12 @@
 # ssm
 
-这个项目是使用spring-mvc与mybatis搭建的java web项目框架，用于学习与快速构建新项目。
+使用SpringMVC和MyBatis搭建的java项目框架，用于学习与快速构建新项目。
 
 包含内容：
-- 基础ssm配置
-- mybatis generator配置
-- 分页实现
-- Redis缓存实现
+- Spring集成mvc
+- Spring集成MyBatis
+- mybatis generator
+- Redis客户端配置与缓存实现
 
 ## 部署与运行步骤
 
