@@ -7,6 +7,7 @@
 - Spring集成MyBatis
 - mybatis generator
 - Redis客户端配置与缓存实现
+- rocketMQ客户端配置
 
 ## 部署与运行步骤
 
@@ -34,4 +35,4 @@
 
 ## Redis集成与配置
 
-参见：[Redis集成与配置](https://github.com/Sunxiai51/ssm/blob/master/Redis.md)
+参见：[Redis缓存中间件的集成、配置与使用](https://github.com/Sunxiai51/Note/blob/master/Java/Redis%E7%BC%93%E5%AD%98%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E9%9B%86%E6%88%90%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8.md)
