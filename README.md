@@ -8,6 +8,7 @@
 - mybatis generator
 - Redis客户端配置与缓存实现
 - rocketMQ客户端配置
+- Kafka客户端配置
 
 ## 部署与运行步骤
 
