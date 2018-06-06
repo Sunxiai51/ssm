@@ -4,10 +4,8 @@ import java.lang.reflect.Method;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -18,8 +16,8 @@ import org.springframework.data.redis.core.RedisTemplate;
  * @author 51
  * @version $Id: RedisCacheConfig.java, v 0.1 2018年1月9日 下午8:01:21 51 Exp $
  */
-@Configuration
-@EnableCaching
+//@Configuration
+//@EnableCaching
 public class RedisCacheConfig extends CachingConfigurerSupport {
     private volatile JedisConnectionFactory        jedisConnectionFactory;
     private volatile RedisTemplate<String, Object> redisTemplate;

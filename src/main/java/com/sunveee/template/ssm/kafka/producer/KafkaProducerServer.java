@@ -8,7 +8,6 @@ import java.util.concurrent.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 
 import com.alibaba.fastjson.JSON;
@@ -20,7 +19,7 @@ import com.sunveee.template.ssm.kafka.KafkaMesConstant;
  * @author 51
  * @version $Id: KafkaProducerServer.java, v 0.1 2018年3月6日 下午5:20:45 51 Exp $
  */
-@Component
+//@Component
 public class KafkaProducerServer {
 
     @Autowired
