@@ -43,6 +43,9 @@
 		<!-- javax相关 -->
 		<javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
 		<javax.javaee-api.version>7.0</javax.javaee-api.version>
+		
+		<!-- 文件上传 -->
+		<commons-fileupload.version>1.3.3</commons-fileupload.version>
 
 	</properties>
 
@@ -230,6 +233,13 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${javax.servlet.jstl.version}</version>
+		</dependency>
+
+		<!-- 文件上传 -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>${commons-fileupload.version}</version>
 		</dependency>
 
 

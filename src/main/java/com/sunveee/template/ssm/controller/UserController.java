@@ -18,6 +18,12 @@ import com.sunveee.template.ssm.service.UserService;
 import com.sunveee.template.ssm.util.LogUtil;
 import com.sunveee.template.ssm.util.PageHandler;
 
+/**
+ * 用户列表分页查询
+ * 
+ * @author 51
+ * @version $Id: UserController.java, v 0.1 2018年6月6日 下午2:54:11 51 Exp $
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -27,7 +33,7 @@ public class UserController {
     private UserService         userService;
 
     @RequestMapping(value = "/list")
-    public String toUserList(@RequestParam(value = "pageNo", defaultValue = "0") Integer pageNo, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
+    public String toUserList(@RequestParam(value = "pageNo", defaultValue = "0") Integer pageNo, @RequestParam(value = "pageSize", defaultValue = "2") Integer pageSize, Model model) {
         LogUtil.debug(logger, "访问用户列表Controller");
 
         List<User> userPage = userService.getUserPage(pageNo, pageSize);
